@@ -1,0 +1,389 @@
+		* {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Consolas';
+            }
+
+            /* horizontal navbar */
+            .content {
+                text-align: center;
+                justify-content: center;
+                background-color: #f1f1f1;
+                padding: 3rem 2rem;
+                transition: 0.4s;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 99;
+            }
+
+            .content .navbar-logo {
+                font-size: 2rem;
+                font-weight: bold;
+                transition: 0.4s;
+            }
+
+            .content .navbar-menu {
+                float: left;
+                color: black;
+                text-align: center;
+                padding: 1rem;
+                text-decoration: none;
+                line-height: 1rem;
+                border-radius: 4px;
+            }
+
+            .content .navbar-menu:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            .content .navbar-menu.active {
+                background-color: cornflowerblue;
+                color: #fff;
+            }
+
+            .navbar-right-menu {
+                float: right;
+            }
+
+            .navbar-right-menu .navbar-menu {
+                margin: 0 0.5rem;
+                font-size: 1.5rem;
+                color: lightsteelblue;
+            }
+
+            .navbar-right-menu .navbar-menu .sub-title {
+                font-size: 1.8rem;
+            }
+
+            /* Profile menu */
+
+            .navbar-profile-image {
+                height: 1.8rem;
+                width: 1.8rem;
+                position: relative;
+                cursor: pointer;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 1px solid lightsteelblue;
+            }
+
+            #navbar-photo {
+                height: 100%;
+                width: 100%;
+            }
+
+            .menu {
+                position: absolute;
+                top: 9rem;
+                right: 1.8rem;
+                padding: 1rem 0.5rem;
+                background-color: #f9f9f9;
+                width: 24rem;
+                box-shadow: 1px 1px 5px rgb(176, 196, 222),
+                    -1px -1px 5px rgb(100, 149, 237);
+                border-radius: 8px;
+                transition: 0.5s;
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            .menu.active {
+                top: 8rem;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .menu::before {
+                content: '';
+                position: absolute;
+                top: -0.5rem;
+                right: 1.8rem;
+                width: 1.8rem;
+                height: 1.8rem;
+                border-radius: 0.5rem;
+                background-color: #f9f9f9;
+                transform: rotate(45deg);
+            }
+
+            .menu .menu-title {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu .menu-title .menu-title-text {
+                display: inline-block;
+                position: relative;
+                font-size: 1em;
+                text-align: center;
+                color: cornflowerblue;
+            }
+
+            .menu .menu-title .menu-title-link {
+                display: inline-block;
+                position: relative;
+                text-decoration: none;
+                font-size: 1.125rem;
+                color: lightslategray;
+            }
+
+            .menu ul {
+                padding: 0.5rem 0;
+                margin: 0;
+            }
+
+            .menu ul li {
+                list-style: none;
+                padding: 0.6rem 0;
+                display: flex;
+                align-items: center;
+            }
+
+            .menu ul li .menu-link .icon {
+                font-size: 1.5em;
+                float: left;
+                opacity: 0.5;
+                transition: 0.5s;
+                cursor: pointer;
+            }
+
+            .menu ul li:hover .menu-link .icon {
+                color: dodgerblue;
+                opacity: 1;
+            }
+
+            .menu ul li .menu-link {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin-left: 2rem;
+                text-decoration: none;
+                color: #666;
+                transition: 0.5s;
+            }
+
+            .menu ul li .menu-link .menu-text {
+                position: relative;
+                display: block;
+                padding-left: 1.5rem;
+                white-space: normal;
+                font-size: 1.2rem;
+                text-align: left;
+            }
+
+            .menu ul li:hover .menu-link .menu-text {
+                color: cornflowerblue;
+            }
+
+            .navbar {
+                width: 1.8rem;
+                height: 1.8rem;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.5s;
+            }
+
+            .active-navbar {
+                width: 6.5rem;
+                height: 6.5rem;
+                transition-delay: 0.3s;
+            }
+
+            .navbar span {
+                position: absolute;
+                width: 0.75rem;
+                height: 0.75rem;
+                /* background-color: lightsteelblue; */
+                border: 2px solid lightsteelblue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 30%;
+                transform: translate(calc(16px * var(--x)), calc(16px * var(--y)));
+                transition: transform 0.5s, width 0.5s, height 0.5s, background-color 0.5s;
+                transition-delay: calc(.1s * var(--i));
+            }
+
+            .active-navbar span {
+                border: none;
+                width: 2.8125rem;
+                height: 2.8125rem;
+                background: #f9f9f9;
+                transform: translate(calc(60px * var(--x)), calc(60px * var(--y)));
+            }
+
+            .navbar span ion-icon {
+                font-size: 0;
+            }
+
+            .active-navbar span ion-icon {
+                font-size: 1.1em;
+                color: cornflowerblue;
+                transition: 0.2s;
+            }
+
+            .active-navbar span ion-icon:hover {
+                color: cornflowerblue;
+                filter: drop-shadow(0 0 5px cornflowerblue) drop-shadow(0 0 13px cornflowerblue) drop-shadow(0 0 21px cornflowerblue);
+            }
+
+            /* Vertical Navbar */
+
+            .navbar-vertical ul {
+                list-style-type: none;
+                width: 25%;
+                background-color: #fff;
+                position: fixed;
+                height: 100%;
+                overflow: auto;
+                top: 20%;
+                left: 0;
+                padding-left: 5px;
+                padding-top: 40px;
+            }
+
+            .navbar-vertical ul li {
+                position: relative;
+                list-style: none;
+                width: 100%;
+            }
+
+            .navbar-vertical li a {
+                display: block;
+                color: #999;
+                padding: 1rem 2rem;
+                text-decoration: none;
+                position: relative;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .navbar-vertical ul li a .icon {
+                position: relative;
+                display: block;
+                line-height: 1.2rem;
+                text-align: center;
+            }
+
+            .navbar-vertical ul li a .icon i {
+                font-size: 1.2em;
+                float: left;
+            }
+
+            .navbar-vertical ul li a .text {
+                position: relative;
+                display: block;
+                padding-left: 2.5rem;
+                white-space: normal;
+                font-size: 1.2rem;
+                text-align: left;
+            }
+
+            .navbar-vertical .active-vertical-navbar a {
+                background-color: lightsteelblue;
+                opacity: 0.8;
+                color: #fff;
+                border-top-right-radius: 2rem;
+                border-bottom-right-radius: 2rem;
+            }
+
+            .navbar-vertical a:hover:not(.active-vertical-navbar a) {
+                background-color: #f1f1f1;
+                color: cornflowerblue;
+                border-top-right-radius: 2rem;
+                border-bottom-right-radius: 2rem;
+            }
+
+            .main-container {
+                height: 200vh;
+                margin-left: 25%;
+                margin-top: 15%;
+                padding: 1rem;
+            }
+
+            .main-container .header-text1,
+            .main-container .header-text2 {
+                text-align: center;
+            }
+
+            .main-container .main-content-text {
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+
+            .toggle-icon {
+                display: none;
+            }
+
+            @media screen and (max-width: 700px) {
+                .navbar-vertical ul {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                }
+
+                .navbar-vertical ul li a {
+                    float: left;
+                }
+
+                .main-container {
+                    width: 100%;
+                    margin-top: 25%;
+                    padding: 1rem;
+                }
+            }
+
+            @media screen and (max-width: 800px) {
+                .content {
+                    padding: 2rem 1rem !important;
+                }
+
+                .content .navbar-menu:not(:first-child) {
+                    display: none;
+                }
+
+                .toggle-icon {
+                    float: right;
+                    display: block;
+                }
+
+                .navbar-right-menu {
+                    float: none;
+                }
+            }
+
+            .topScrollBtn {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 30px;
+                z-index: 100;
+                border: none;
+                outline: none;
+                background-color: #f9f9f9;
+                color: #666;
+                cursor: pointer;
+                padding: 0.8rem;
+                border-radius: 4px;
+                transition: transform 1.5s;
+            }
+            
+            .topScrollBtn ion-icon, .topScrollBtn i{
+                font-size: 1.8rem;
+            }
+
+            .topScrollBtn:hover {
+                transform: rotate(180deg);
+                transition: transform 1.5s;
+                color: cornflowerblue;
+                background-color: #f1f1f1;
+            }
